@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- Font-icon css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <title>Registration - Swiftrack Admin</title>
+    <style>
+      .login-box {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .flipped {
+        transform: translateX(-100%);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="material-half-bg">
+      <div class="cover"></div>
+    </section>
+    <section class="login-content">
+      <div class="logo">
+        <h1>Swiftrack</h1>
+      </div>
+      <div class="login-box">
+        <form class="login-form" onsubmit="return registerAdmin()">
+          <h3 class="login-head">
+            <i class="bi bi-person me-2"></i>STEP 1: REGISTER COMPANY
+          </h3>
+          <div class="mb-3">
+            <label class="form-label">COMPANY NAME</label>
+            <input
+              class="form-control"
+              type="text"
+              id="companyName"
+              placeholder="Company Name"
+              required
+              autofocus
+            />
+          </div>
+          <div class="mb-3 btn-container d-grid">
+            <button class="btn btn-primary btn-block">
+              <i class="bi bi-check me-2 fs-5"></i>REGISTER COMPANY
+            </button>
+          </div>
+        </form>
+
+        <form class="login-form flipped" onsubmit="return registerUser()">
+          <h3 class="login-head">
+            <i class="bi bi-person me-2"></i>STEP 2: USER REGISTRATION
+          </h3>
+          <div class="mb-3">
+            <label class="form-label">USERNAME</label>
+            <input
+              class="form-control"
+              type="text"
+              id="userName"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">PASSWORD</label>
+            <input
+              class="form-control"
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="mb-3 btn-container d-grid">
+            <button class="btn btn-primary btn-block">
+              <i class="bi bi-box-arrow-in-right me-2 fs-5"></i>REGISTER USER
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <!-- Essential javascripts for application to work-->
+    <script src="js/jquery-3.7.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript">
+      // Login Page Flipbox control
+      $('.login-content [data-toggle="flip"]').click(function () {
+        $(".login-box").toggleClass("flipped");
+        return false;
+      });
+
+      function registerAdmin() {
+        const companyName = document.getElementById("companyName").value;
+
+        // Simulate backend API call
+        setTimeout(() => {
+          console.log("Admin Registration:", companyName);
+          // You may redirect to the user registration page after successful registration
+          $(".login-box").toggleClass("flipped");
+        }, 500);
+
+        return false; // Prevent form submission
+      }
+
+      function registerUser() {
+        const userName = document.getElementById("userName").value;
+        const password = document.getElementById("password").value;
+
+        // Simulate backend API call
+        setTimeout(() => {
+          console.log("User Registration:", userName, password);
+          // You may redirect to the user dashboard or login page after successful registration
+          window.location.href = "/dashboard"; // Redirect to the dashboard
+        }, 500);
+
+        return false; // Prevent form submission
+      }
+    </script>
+  </body>
+</html>
